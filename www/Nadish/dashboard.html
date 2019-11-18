@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<title>UTM Mobile APP</title>
+
+	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/dashboard.css">
+	<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="css/jquery-confirm.css">
+
+	<script src="../js/jquery.js" charset="utf-8"></script>
+	<script src="../js/jquery.mobile-1.4.5.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
+	<script type="text/javascript" src="js/all.js"></script>
+	<script type="text/javascript" src="js/jquery-confirm.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+
+
+	<link rel="stylesheet" href="../leaflet/leaflet.css">
+	<script type="text/javascript" src="../leaflet/leaflet.js"></script>
+
+	<script src="../leaflet/esri-leaflet-debug.js"></script>
+	<link rel="stylesheet" href="../leaflet/esri-leaflet-geocoder.css">
+	<script src="../leaflet/esri-leaflet-geocoder-debug.js"></script>
+	<script src="../leaflet/easy-button.js"></script>
+	<link rel="stylesheet" href="../leaflet/easy-button.css">
+
+	<style>
+		* {
+			font-family: 'Righteous', cursive;
+		}
+
+		.footer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+		}
+
+		#clock {
+			font-size: 2rem;
+			font-weight: bold;
+			color: #9eff00;
+			background-color: gray;
+			border-radius: 30px;
+			padding: 10px 20px 10px 20px;
+			margin-left: 25%;
+			margin-right: 25%;
+		}
+	</style>
+</head>
+
+<body onload="check();">
+	<div data-role="page" data-theme="a" id="dashboard">
+		<div data-role="header">
+			<h1>Dashboard</h1>
+			<button onclick="location.href='../index.html'" class="ui-btn ui-shadow ui-btn-right ui-icon-home ui-btn-icon-notext ui-corner-all">Home</a>
+		</div>
+
+		<div data-role="main" class="ui-content" style="margin-bottom: 50px;">
+			<span id="clock">&nbsp;</span>
+			<br />
+			<br />
+			<div class="ui-grid-b">
+				<div class="ui-block-a"><a data-transition="flow" href="#news" class="ui-shadow ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-top">News</a></div>
+				<div class="ui-block-b"><a data-transition="flow" href="#events" class="ui-shadow ui-btn ui-corner-all ui-icon-clock ui-btn-icon-top">Events</a></div>
+				<div class="ui-block-c"><a data-transition="flow" href="#timetables" class="ui-shadow ui-btn ui-corner-all ui-icon-calendar ui-btn-icon-top">Timetables</a></div>
+
+				<div class="ui-block-a"><a data-transition="flow" href="#results" class="ui-shadow ui-btn ui-corner-all ui-icon-action ui-btn-icon-top">Results</a></div>
+				<div class="ui-block-b"><a data-transition="flow" href="#weather" class="ui-shadow ui-btn ui-corner-all ui-icon-cloud ui-btn-icon-top">Weather</a></div>
+				<div class="ui-block-c"><a data-transition="flow" href="#location" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-top">Location</a></div>
+
+				<div class="ui-block-a"><a data-transition="flow" href="#contactus" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-top">Contact Us</a></div>
+				<div class="ui-block-b"><a data-transition="flow" href="#changepassword" class="ui-shadow ui-btn ui-corner-all ui-icon-lock ui-btn-icon-top">Password</a></div>
+				<div class="ui-block-c"><a data-transition="flow" href="#about" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-top">About</a></div>
+			</div>
+			<div class="ui-grid-solo">
+				<div class="ui-block-a"><button onclick="signout()" class="ui-shadow ui-btn ui-corner-all ui-icon-power ui-btn-icon-top">Logout</button></div>
+			</div>
+		</div>
+
+		<div data-role="footer" class="footer">
+			<h1>Homework</h1>
+		</div>
+	</div>
+
+	<div data-role="page" data-theme="a" id="news">
+		<div data-role="panel" id="mypanel">
+			<a data-transition="flow" href="#news" class="ui-shadow ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-left">News</a>
+			<a data-transition="flow" href="#events" class="ui-shadow ui-btn ui-corner-all ui-icon-clock ui-btn-icon-left">Events</a>
+			<a data-transition="flow" href="#timetables" class="ui-shadow ui-btn ui-corner-all ui-icon-calendar ui-btn-icon-left">Timetables</a>
+			<a data-transition="flow" href="#results" class="ui-shadow ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Results</a>
+			<a data-transition="flow" href="#weather" class="ui-shadow ui-btn ui-corner-all ui-icon-cloud ui-btn-icon-left">Weather</a>
+			<a data-transition="flow" href="#location" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a data-transition="flow" href="#contactus" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact Us</a>
+			<a data-transition="flow" href="#changepassword" class="ui-shadow ui-btn ui-corner-all ui-icon-lock ui-btn-icon-left">Change Password</a>
+			<a data-transition="flow" href="#about" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About Me</a>
+		</div>
+
+		<div data-role="header">
+			<h1>News</h1>
+			<a href="#dashboard" class="ui-btn ui-shadow ui-btn-right ui-icon-home ui-btn-icon-notext ui-corner-all">Home</a>
+			<a href="#mypanel" class="ui-btn ui-shadow ui-btn-left ui-icon-bars ui-btn-icon-notext ui-corner-all">Menu</a>
+		</div>
+
+		<div data-role="main" class="ui-content" style="margin-bottom: 50px;">
+			<ul id="newslist" data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-inset="true"></ul>
+		</div>
+
+		<div data-role="footer" class="footer">
+			<h1>Homework</h1>
+		</div>
+	</div>
+
+	<div data-role="page" data-theme="a" id="events">
+		<div data-role="panel" id="mypanel">
+			<a data-transition="flow" href="#news" class="ui-shadow ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-left">News</a>
+			<a data-transition="flow" href="#events" class="ui-shadow ui-btn ui-corner-all ui-icon-clock ui-btn-icon-left">Events</a>
+			<a data-transition="flow" href="#timetables" class="ui-shadow ui-btn ui-corner-all ui-icon-calendar ui-btn-icon-left">Timetables</a>
+			<a data-transition="flow" href="#results" class="ui-shadow ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Results</a>
+			<a data-transition="flow" href="#weather" class="ui-shadow ui-btn ui-corner-all ui-icon-cloud ui-btn-icon-left">Weather</a>
+			<a data-transition="flow" href="#location" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a data-transition="flow" href="#contactus" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact Us</a>
+			<a data-transition="flow" href="#changepassword" class="ui-shadow ui-btn ui-corner-all ui-icon-lock ui-btn-icon-left">Change Password</a>
+			<a data-transition="flow" href="#about" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About Me</a>
+		</div>
+
+		<div data-role="header">
+			<h1>Events</h1>
+			<a href="#dashboard" class="ui-btn ui-shadow ui-btn-right ui-icon-home ui-btn-icon-notext ui-corner-all">Home</a>
+			<a href="#mypanel" class="ui-btn ui-shadow ui-btn-left ui-icon-bars ui-btn-icon-notext ui-corner-all">Menu</a>
+		</div>
+
+		<div data-role="main" class="ui-content" style="margin-bottom: 50px;">
+			<ul id="eventslist" data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-inset="true"></ul>
+		</div>
+
+		<div data-role="footer" class="footer">
+			<h1>Homework</h1>
+		</div>
+	</div>
+
+	<div data-role="page" data-theme="a" id="timetables">
+		<div data-role="panel" id="mypanel">
+			<a data-transition="flow" href="#news" class="ui-shadow ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-left">News</a>
+			<a data-transition="flow" href="#events" class="ui-shadow ui-btn ui-corner-all ui-icon-clock ui-btn-icon-left">Events</a>
+			<a data-transition="flow" href="#timetables" class="ui-shadow ui-btn ui-corner-all ui-icon-calendar ui-btn-icon-left">Timetables</a>
+			<a data-transition="flow" href="#results" class="ui-shadow ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Results</a>
+			<a data-transition="flow" href="#weather" class="ui-shadow ui-btn ui-corner-all ui-icon-cloud ui-btn-icon-left">Weather</a>
+			<a data-transition="flow" href="#location" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a data-transition="flow" href="#contactus" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact Us</a>
+			<a data-transition="flow" href="#changepassword" class="ui-shadow ui-btn ui-corner-all ui-icon-lock ui-btn-icon-left">Change Password</a>
+			<a data-transition="flow" href="#about" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About Me</a>
+		</div>
+
+		<div data-role="header">
+			<h1>Timetables</h1>
+			<a href="#dashboard" class="ui-btn ui-shadow ui-btn-right ui-icon-home ui-btn-icon-notext ui-corner-all">Home</a>
+			<a href="#mypanel" class="ui-btn ui-shadow ui-btn-left ui-icon-bars ui-btn-icon-notext ui-corner-all">Menu</a>
+		</div>
+
+		<div data-role="main" class="ui-content" style="margin-bottom: 50px;">
+			<ul id="timetableslist" data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-inset="true"></ul>
+		</div>
+
+		<div data-role="footer" class="footer">
+			<h1>Homework</h1>
+		</div>
+	</div>
+
+	<div data-role="page" data-theme="a" id="results">
+		<div data-role="panel" id="mypanel">
+			<a data-transition="flow" href="#news" class="ui-shadow ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-left">News</a>
+			<a data-transition="flow" href="#events" class="ui-shadow ui-btn ui-corner-all ui-icon-clock ui-btn-icon-left">Events</a>
+			<a data-transition="flow" href="#timetables" class="ui-shadow ui-btn ui-corner-all ui-icon-calendar ui-btn-icon-left">Timetables</a>
+			<a data-transition="flow" href="#results" class="ui-shadow ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Results</a>
+			<a data-transition="flow" href="#weather" class="ui-shadow ui-btn ui-corner-all ui-icon-cloud ui-btn-icon-left">Weather</a>
+			<a data-transition="flow" href="#location" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a data-transition="flow" href="#contactus" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact Us</a>
+			<a data-transition="flow" href="#changepassword" class="ui-shadow ui-btn ui-corner-all ui-icon-lock ui-btn-icon-left">Change Password</a>
+			<a data-transition="flow" href="#about" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About Me</a>
+		</div>
+
+		<div data-role="header">
+			<h1>Results</h1>
+			<a href="#dashboard" class="ui-btn ui-shadow ui-btn-right ui-icon-home ui-btn-icon-notext ui-corner-all">Home</a>
+			<a href="#mypanel" class="ui-btn ui-shadow ui-btn-left ui-icon-bars ui-btn-icon-notext ui-corner-all">Menu</a>
+		</div>
+
+		<div data-role="main" class="ui-content" style="margin-bottom: 50px;">
+			<ul id="resultslist" data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-inset="true"></ul>
+		</div>
+
+		<div data-role="footer" class="footer">
+			<h1>Homework</h1>
+		</div>
+	</div>
+
+	<div data-role="page" data-theme="a" id="weather">
+		<div data-role="panel" id="mypanel">
+			<a data-transition="flow" href="#news" class="ui-shadow ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-left">News</a>
+			<a data-transition="flow" href="#events" class="ui-shadow ui-btn ui-corner-all ui-icon-clock ui-btn-icon-left">Events</a>
+			<a data-transition="flow" href="#timetables" class="ui-shadow ui-btn ui-corner-all ui-icon-calendar ui-btn-icon-left">Timetables</a>
+			<a data-transition="flow" href="#results" class="ui-shadow ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Results</a>
+			<a data-transition="flow" href="#weather" class="ui-shadow ui-btn ui-corner-all ui-icon-cloud ui-btn-icon-left">Weather</a>
+			<a data-transition="flow" href="#location" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a data-transition="flow" href="#contactus" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact Us</a>
+			<a data-transition="flow" href="#changepassword" class="ui-shadow ui-btn ui-corner-all ui-icon-lock ui-btn-icon-left">Change Password</a>
+			<a data-transition="flow" href="#about" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About Me</a>
+		</div>
+
+		<div data-role="header">
+			<h1>Weather</h1>
+			<a href="#dashboard" class="ui-btn ui-shadow ui-btn-right ui-icon-home ui-btn-icon-notext ui-corner-all">Home</a>
+			<a href="#mypanel" class="ui-btn ui-shadow ui-btn-left ui-icon-bars ui-btn-icon-notext ui-corner-all">Menu</a>
+		</div>
+
+		<div data-role="main" class="ui-content" style="margin-bottom: 50px;">
+			<ul id="weatherlist" data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-inset="true"></ul>
+		</div>
+
+		<div data-role="footer" class="footer">
+			<h1>Homework</h1>
+		</div>
+	</div>
+
+	<div data-role="page" data-theme="a" id="location">
+		<div data-role="panel" id="mypanel">
+			<a data-transition="flow" href="#news" class="ui-shadow ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-left">News</a>
+			<a data-transition="flow" href="#events" class="ui-shadow ui-btn ui-corner-all ui-icon-clock ui-btn-icon-left">Events</a>
+			<a data-transition="flow" href="#timetables" class="ui-shadow ui-btn ui-corner-all ui-icon-calendar ui-btn-icon-left">Timetables</a>
+			<a data-transition="flow" href="#results" class="ui-shadow ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Results</a>
+			<a data-transition="flow" href="#weather" class="ui-shadow ui-btn ui-corner-all ui-icon-cloud ui-btn-icon-left">Weather</a>
+			<a data-transition="flow" href="#location" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a data-transition="flow" href="#contactus" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact Us</a>
+			<a data-transition="flow" href="#changepassword" class="ui-shadow ui-btn ui-corner-all ui-icon-lock ui-btn-icon-left">Change Password</a>
+			<a data-transition="flow" href="#about" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About Me</a>
+		</div>
+
+		<div data-role="header">
+			<h1>Track Yourself</h1>
+			<a href="#dashboard" class="ui-btn ui-shadow ui-btn-right ui-icon-home ui-btn-icon-notext ui-corner-all">Home</a>
+			<a href="#mypanel" class="ui-btn ui-shadow ui-btn-left ui-icon-bars ui-btn-icon-notext ui-corner-all">Menu</a>
+		</div>
+
+		<div data-role="main" class="ui-content" style="margin-bottom: 50px;">
+			<div id="mapid" style="height: 80vh;"></div>
+
+			<script type="text/javascript">
+				if (navigator.geolocation == undefined) {
+					alert("Geolocation undefined");
+				} else {
+					navigator.geolocation.getCurrentPosition(userLocated, locationError);
+
+					function userLocated(position) {
+						var latitude = -20.17684903710942;
+						var longitude = 57.467379473529945;
+
+						var mymap = L.map('mapid').setView([-20.20665, 57.6755], 10.4);
+						L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+							maxZoom: 19,
+							attribution: 'Map data &copy;<a href="https://www.openstreetmap.org/">OpenStreetMap</a>contributors,<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+							id: 'mapbox.streets',
+							accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+						}).addTo(mymap);
+
+						L.easyButton('fa-refresh', function() {
+							location.reload();
+							mymap.setView([-20.20665, 57.6755], 10.4);
+						}).addTo(mymap);
+
+						L.easyButton('fa-home', function() {
+							mymap.setView([latitude, longitude], 18.1);
+							var marker = L.marker([latitude, longitude]).addTo(mymap);
+							marker.bindPopup("University of Mauritius").closePopup();
+						}).addTo(mymap);
+
+						var searchControl = L.esri.Geocoding.geosearch().addTo(mymap);
+						var results = new L.LayerGroup().addTo(mymap);
+						searchControl.on('results', function(data) {
+							results.clearLayers();
+							for (var i = data.results.length - 1; i >= 0; i--) {
+								results.addLayer(L.marker(data.results[i].latlng));
+							}
+						});
+
+						var geocodeService = L.esri.Geocoding.geocodeService();
+						mymap.on('click', function(e) {
+							geocodeService.reverse().latlng(e.latlng).run(function(error, result) {
+								if (error) {
+									return;
+								}
+								var popLocation = e.latlng;
+								var popup = L.popup()
+									.setLatLng(popLocation)
+									.setContent(result.address.Match_addr)
+									.openOn(mymap);
+							});
+						});
+					}
+
+					function locationError(error) {
+						switch (error.code) {
+							case error.PERMISSION_DENIED:
+								alert("Permission Denied- " + error.message);
+								break;
+							case error.POSITION_UNAVAILABLE:
+								alert("Position Not Available- " + error.message);
+								break;
+							case error.TIMEOUT:
+								alert("Request Time out- " + error.message);
+								break;
+						}
+					}
+				}
+			</script>
+		</div>
+
+		<div data-role="footer" class="footer">
+			<h1>Homework</h1>
+		</div>
+	</div>
+
+	<div data-role="page" data-theme="a" id="contactus">
+		<div data-role="panel" id="mypanel">
+			<a data-transition="flow" href="#news" class="ui-shadow ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-left">News</a>
+			<a data-transition="flow" href="#events" class="ui-shadow ui-btn ui-corner-all ui-icon-clock ui-btn-icon-left">Events</a>
+			<a data-transition="flow" href="#timetables" class="ui-shadow ui-btn ui-corner-all ui-icon-calendar ui-btn-icon-left">Timetables</a>
+			<a data-transition="flow" href="#results" class="ui-shadow ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Results</a>
+			<a data-transition="flow" href="#weather" class="ui-shadow ui-btn ui-corner-all ui-icon-cloud ui-btn-icon-left">Weather</a>
+			<a data-transition="flow" href="#location" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a data-transition="flow" href="#contactus" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact Us</a>
+			<a data-transition="flow" href="#changepassword" class="ui-shadow ui-btn ui-corner-all ui-icon-lock ui-btn-icon-left">Change Password</a>
+			<a data-transition="flow" href="#about" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About Me</a>
+		</div>
+
+		<div data-role="header">
+			<h1>Contact US</h1>
+			<a href="#dashboard" class="ui-btn ui-shadow ui-btn-right ui-icon-home ui-btn-icon-notext ui-corner-all">Home</a>
+			<a href="#mypanel" class="ui-btn ui-shadow ui-btn-left ui-icon-bars ui-btn-icon-notext ui-corner-all">Menu</a>
+		</div>
+
+		<div data-role="main" class="ui-content" style="margin-bottom: 50px;">
+			<div>
+				<label for="email">Email</label>
+				<input id="email" name="email" type="text" placeholder="Email" />
+				<br />
+				<label for="subject">Subject</label>
+				<input id="subject" name="subject" type="text" placeholder="Subject" />
+				<br />
+				<label for="message">Message</label>
+				<textarea id="message" name="message" placeholder="Enter your Message..."></textarea>
+				<br />
+				<div class="ui-block-a"><button onclick="ResetContactForm();" class="ui-shadow ui-btn ui-corner-all">Reset</button></div>
+				<div class="ui-block-b" style="width: 10%;"></div>
+				<div class="ui-block-d"><button onclick="submitMessage()" class="ui-shadow ui-btn ui-corner-all">Send Message</button></div>
+			</div>
+		</div>
+
+		<div data-role="footer" class="footer">
+			<h1>Homework</h1>
+		</div>
+	</div>
+
+	<div data-role="page" data-theme="a" id="about">
+		<div data-role="panel" id="mypanel">
+			<a data-transition="flow" href="#news" class="ui-shadow ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-left">News</a>
+			<a data-transition="flow" href="#events" class="ui-shadow ui-btn ui-corner-all ui-icon-clock ui-btn-icon-left">Events</a>
+			<a data-transition="flow" href="#timetables" class="ui-shadow ui-btn ui-corner-all ui-icon-calendar ui-btn-icon-left">Timetables</a>
+			<a data-transition="flow" href="#results" class="ui-shadow ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Results</a>
+			<a data-transition="flow" href="#weather" class="ui-shadow ui-btn ui-corner-all ui-icon-cloud ui-btn-icon-left">Weather</a>
+			<a data-transition="flow" href="#location" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a data-transition="flow" href="#contactus" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact Us</a>
+			<a data-transition="flow" href="#changepassword" class="ui-shadow ui-btn ui-corner-all ui-icon-lock ui-btn-icon-left">Change Password</a>
+			<a data-transition="flow" href="#about" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About Me</a>
+		</div>
+
+		<div data-role="header">
+			<h1>About Me</h1>
+			<a href="#dashboard" class="ui-btn ui-shadow ui-btn-right ui-icon-home ui-btn-icon-notext ui-corner-all">Home</a>
+			<a href="#mypanel" class="ui-btn ui-shadow ui-btn-left ui-icon-bars ui-btn-icon-notext ui-corner-all">Menu</a>
+		</div>
+
+		<div data-role="main" class="ui-content" style="margin-bottom: 50px;">
+			<span id="aboutspan"></span>
+		</div>
+
+		<div data-role="footer" class="footer">
+			<h1>Homework</h1>
+		</div>
+	</div>
+
+	<div data-role="page" data-theme="a" id="changepassword">
+		<div data-role="panel" id="mypanel">
+			<a data-transition="flow" href="#news" class="ui-shadow ui-btn ui-corner-all ui-icon-bullets ui-btn-icon-left">News</a>
+			<a data-transition="flow" href="#events" class="ui-shadow ui-btn ui-corner-all ui-icon-clock ui-btn-icon-left">Events</a>
+			<a data-transition="flow" href="#timetables" class="ui-shadow ui-btn ui-corner-all ui-icon-calendar ui-btn-icon-left">Timetables</a>
+			<a data-transition="flow" href="#results" class="ui-shadow ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Results</a>
+			<a data-transition="flow" href="#weather" class="ui-shadow ui-btn ui-corner-all ui-icon-cloud ui-btn-icon-left">Weather</a>
+			<a data-transition="flow" href="#location" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a data-transition="flow" href="#contactus" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact Us</a>
+			<a data-transition="flow" href="#changepassword" class="ui-shadow ui-btn ui-corner-all ui-icon-lock ui-btn-icon-left">Change Password</a>
+			<a data-transition="flow" href="#about" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About Me</a>
+		</div>
+
+		<div data-role="header">
+			<h1>Change Password</h1>
+			<a href="#dashboard" class="ui-btn ui-shadow ui-btn-right ui-icon-home ui-btn-icon-notext ui-corner-all">Home</a>
+			<a href="#mypanel" class="ui-btn ui-shadow ui-btn-left ui-icon-bars ui-btn-icon-notext ui-corner-all">Menu</a>
+		</div>
+
+		<div data-role="main" class="ui-content" style="margin-bottom: 50px;">
+			<label for="currpass">Current Password:</label>
+			<input type="password" name="currpass" id="currpass" placeholder="**********" autocomplete="off">
+
+			<label for="newpass">New Password:</label>
+			<input type="password" name="newpass" id="newpass" placeholder="**********" autocomplete="off">
+
+			<label for="renewpass">Retype New Password:</label>
+			<input type="password" name="renewpass" id="renewpass" placeholder="**********" autocomplete="off">
+
+			<div class="ui-grid-b">
+				<div class="ui-block-a"><button onclick="ResetPasswordForm();" class="ui-shadow ui-btn ui-corner-all">Reset</button></div>
+				<div class="ui-block-b" style="width: 10%;"></div>
+				<div class="ui-block-d"><button onclick="ChangePasswordForm();" class="ui-shadow ui-btn ui-corner-all">Change Password</button></div>
+			</div>
+
+			<div data-role="footer" class="footer">
+				<h1>Homework</h1>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

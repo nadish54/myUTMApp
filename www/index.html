@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<title>UTM Mobile APP</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="Nadish/css/jquery-confirm.css">
+
+	<script src="js/jquery.js" charset="utf-8"></script>
+	<script src="js/jquery.mobile-1.4.5.js" charset="utf-8"></script>
+	<script src="js/jquery.flexslider.js" charset="utf-8"></script>
+	<script src="js/index.js" charset="utf-8"></script>
+
+	<script type="text/javascript" src="Nadish/js/jquery-confirm.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+
+	<link rel="stylesheet" href="Nadish/css/all.css">
+	<script type="text/javascript" src="Nadish/js/all.js"></script>
+
+	<link rel="stylesheet" href="leaflet/leaflet.css">
+	<script type="text/javascript" src="leaflet/leaflet.js"></script>
+	<script src="leaflet/esri-leaflet-debug.js"></script>
+	<link rel="stylesheet" href="leaflet/esri-leaflet-geocoder.css">
+	<script src="leaflet/esri-leaflet-geocoder-debug.js"></script>
+	<script src="leaflet/easy-button.js"></script>
+	<link rel="stylesheet" href="leaflet/easy-button.css">
+
+	<style>
+		.ui-panel-animate {
+			transition: transform 1350ms ease 0s !important;
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			text-decoration: none;
+		}
+
+		th {
+			background-color: #45B0F7;
+			color: white;
+		}
+
+
+		.leaflet-bar {
+			color: black;
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Home -->
+	<div data-role="page" data-theme="a" id="home">
+		<div data-role="panel" id="mypanel">
+			<a href="#home" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
+			<a href="#news" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">News</a>
+			<a href="#event" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Events</a>
+			<a href="#courses" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Courses</a>
+			<a href="#fees" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Fees</a>
+			<a href="#location" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a href="#aboutus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About UTM</a>
+			<a href="#contactus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact us</a>
+
+		</div>
+
+		<div data-theme="a" data-role="header">
+			<h3>UNIVERSITY OF TECHNOLOGY</h3>
+			<a onclick="location.href='Nadish/index.html';" class="ui-btn ui-btn-inline">Login</a>
+			<a class="ui-btn-right" id="open-panel">&#9776;</a>
+		</div>
+
+		<div data-role="content">
+			<!-- Carousel -->
+			<div class="flexslider">
+				<ul class="slides">
+					<li>
+						<img src="images/utm1.jpeg" />
+						<p class="flex-caption">Campus</p>
+					</li>
+					<li>
+						<img src="images/utm2.png" />
+						<p class="flex-caption">Central Administration</p>
+					</li>
+					<li>
+						<img src="images/utm3.png" />
+						<p class="flex-caption">University of Technology</p>
+					</li>
+					<li>
+						<img src="images/utm4.png" />
+						<p class="flex-caption">Parking</p>
+					</li>
+				</ul>
+			</div>
+
+			<div data-role="header">
+				<h1><b>TOP 3 UPCOMING EVENTS</b></h1>
+			</div>
+
+			<div data-role="content">
+				<div class="ui-grid-b" id="topthreeevent">
+					<!-- 3 Column Grid -->
+				</div>
+			</div>
+
+			<div data-role="header">
+				<h1><b>TOP 3 UPCOMING NEWS</b></h1>
+			</div>
+
+			<div data-role="content">
+				<div class="ui-grid-b" id="topthreenews">
+				</div>
+			</div>
+
+			<div data-role="header">
+				<h1><b>FEES AND MODE OF PAYMENT</b></h1>
+			</div>
+
+			<div data-role="content">
+				<div class="ui-grid-b">
+					<!-- 3 Column Grid -->
+					<div class="ui-block-a ui-shadow">
+						<div onclick="location.href='#fees';" class="ui-bar ui-bar-a" style="height:100px; margin:5px;">Undergraduate<br>
+							<p>Basic information</p>
+						</div>
+
+					</div>
+					<div class="ui-block-b ui-shadow">
+						<div onclick="location.href='#fees';" class="ui-bar ui-bar-a" style="height:100px; margin:5px;">Postgraduate<br>
+							<p>Basic information</p>
+						</div>
+					</div>
+					<div class="ui-block-c ui-shadow">
+						<div onclick="location.href='#fees';" class="ui-bar ui-bar-a" style="height:100px; margin:5px;">Foreign Student<br>
+							<p>Basic information</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+
+			<div data-role="footer" data-position="fixed">
+				<h1>Copyright © 2019 UTM. All Rights Reserved.</h1>
+			</div>
+		</div>
+	</div>
+
+	<!-- News -->
+	<div data-role="page" id="news">
+		<div data-role="panel" id="mypanel">
+			<a href="#home" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
+			<a href="#news" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">News</a>
+			<a href="#event" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Events</a>
+			<a href="#courses" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Courses</a>
+			<a href="#fees" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Fees</a>
+			<a href="#location" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a href="#aboutus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About UTM</a>
+			<a href="#contactus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact us</a>
+
+		</div>
+
+		<div data-theme="a" data-role="header">
+			<h3>UNIVERSITY OF TECHNOLOGY</h3>
+			<a onclick="location.href='Nadish/index.html';" class="ui-btn ui-btn-inline">Login</a>
+			<a class="ui-btn-right" id="open-panel">&#9776;</a>
+		</div>
+
+		<div data-role="content">
+			<div data-theme="a" data-role="header">
+				<h3>All News</h3>
+			</div>
+
+			<form>
+				<input id="filterTable-input" data-type="search" placeholder="Search">
+			</form>
+
+			<table data-role="table" data-mode="reflow" id="newstable" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
+				<thead data-role="header">
+					<tr>
+						<th data-priority="1"><b>ID</b></th>
+						<th data-priority="persist"><b>Title</b></th>
+						<th data-priority="2"><b>Description</b></th>
+						<th data-priority="3"><b>Posted Date</b></th>
+					</tr>
+				</thead>
+
+				<tbody style="text-align:center;" id="news_table_data"></tbody>
+			</table>
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			<h1>Copyright © 2019 UTM. All Rights Reserved.</h1>
+		</div>
+	</div>
+
+	<!-- Event -->
+	<div data-role="page" id="event">
+		<div data-role="panel" id="mypanel">
+			<a href="#home" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
+			<a href="#news" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">News</a>
+			<a href="#event" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Events</a>
+			<a href="#courses" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Courses</a>
+			<a href="#fees" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Fees</a>
+			<a href="#location" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a href="#aboutus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About UTM</a>
+			<a href="#contactus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact us</a>
+
+		</div>
+
+		<div data-theme="a" data-role="header">
+			<h3>UNIVERSITY OF TECHNOLOGY</h3>
+			<a onclick="location.href='Nadish/index.html';" class="ui-btn ui-btn-inline">Login</a>
+			<a class="ui-btn-right" id="open-panel">&#9776;</a>
+		</div>
+
+		<div data-role="content">
+			<div data-theme="a" data-role="header">
+				<h3>All Events</h3>
+			</div>
+
+			<form>
+				<input id="filterTable-inputEvent" data-type="search" placeholder="Search">
+			</form>
+
+			<table data-role="table" data-mode="reflow" id="eventtable" data-filter="true" data-input="#filterTable-inputEvent" class="ui-responsive">
+				<thead data-role="header">
+					<tr>
+						<th data-priority="1"><b>ID</b></th>
+						<th data-priority="persist"><b>Title</b></th>
+						<th data-priority="2"><b>Description</b></th>
+						<th data-priority="3"><b>Schedule Date</b></th>
+					</tr>
+				</thead>
+
+				<tbody style="text-align:center;" id="event_table_data"></tbody>
+			</table>
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			<h1>Copyright © 2019 UTM. All Rights Reserved.</h1>
+		</div>
+	</div>
+
+	<!-- Courses -->
+	<div data-role="page" id="courses">
+		<div data-role="panel" id="mypanel">
+			<a href="#home" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
+			<a href="#news" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">News</a>
+			<a href="#event" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Events</a>
+			<a href="#courses" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Courses</a>
+			<a href="#fees" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Fees</a>
+			<a href="#location" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a href="#aboutus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About UTM</a>
+			<a href="#contactus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact us</a>
+
+		</div>
+
+		<div data-theme="a" data-role="header">
+			<h3>UNIVERSITY OF TECHNOLOGY</h3>
+			<a onclick="location.href='Nadish/index.html';" class="ui-btn ui-btn-inline">Login</a>
+			<a class="ui-btn-right" id="open-panel">&#9776;</a>
+		</div>
+
+		<div data-role="content">
+			<div data-theme="a" data-role="header">
+				<h3>All Courses</h3>
+			</div>
+			<form>
+				<input id="filterTable-inputCourses" data-type="search" placeholder="Search">
+			</form>
+
+			<table data-role="table" data-mode="reflow" id="coursestable" data-filter="true" data-input="#filterTable-inputCourses" class="ui-responsive">
+				<thead data-role="header">
+					<tr>
+						<th data-priority="1"><b>ID</b></th>
+						<th data-priority="persist"><b>Title</b></th>
+						<th data-priority="2"><b>Description</b></th>
+						<th data-priority="3"><b>Mode</b></th>
+						<th data-priority="4"><b>Duration</b></th>
+						<th data-priority="5"><b>Programme</b></th>
+						<th data-priority="6"><b>School</b></th>
+					</tr>
+				</thead>
+
+				<tbody style="text-align:center;" id="courses_table_data"></tbody>
+			</table>
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			<h1>Copyright © 2019 UTM. All Rights Reserved.</h1>
+		</div>
+	</div>
+
+	<!-- Fees -->
+	<div data-role="page" id="fees">
+		<div data-role="panel" id="mypanel">
+			<a href="#home" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
+			<a href="#news" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">News</a>
+			<a href="#event" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Events</a>
+			<a href="#courses" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Courses</a>
+			<a href="#fees" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Fees</a>
+			<a href="#location" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a href="#aboutus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About UTM</a>
+			<a href="#contactus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact us</a>
+
+		</div>
+
+		<div data-theme="a" data-role="header">
+			<h3>UNIVERSITY OF TECHNOLOGY</h3>
+			<a onclick="location.href='Nadish/index.html';" class="ui-btn ui-btn-inline">Login</a>
+			<a class="ui-btn-right" id="open-panel">&#9776;</a>
+		</div>
+
+		<div data-role="content">
+			<div data-role="header">
+				<h1><b>FEES MAURITIAN STUDENTS</b></h1>
+			</div>
+
+			<p>(A) Application Fees : Rs1,000/-</p><br>
+			<p>(B) Administrative Fees : Rs3,500/- (Non-refundable)</p><br>
+			<p>(C) Student Union Fees : Rs200/- </p><br>
+			<p>(D) Tuition Fees : </p><br>
+
+			<br>
+
+			<form>
+				<input id="filterTable-inputFMS" data-type="search" placeholder="Search">
+			</form>
+
+			<table data-role="table" id="movie-table" data-filter="true" data-input="#filterTable-inputFMS" class="ui-responsive">
+				<thead>
+					<tr>
+						<th data-priority="1"><b>Programmes</b></th>
+						<th data-priority="2"><b>Mode</b></th>
+						<th data-priority="3"><b>Tuition Fees + examination fees/Semester</b></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<th>Certificate</th>
+						<td>FT / PT</td>
+						<td>Rs22,300 / Rs15,700</td>
+					</tr>
+
+					<tr>
+						<th>Diploma</th>
+						<td>FT / PT</td>
+						<td>Rs 22,300 /Rs 15,700</td>
+					</tr>
+
+					<tr>
+						<th>UnderGraduate</th>
+						<td>FT / PT</td>
+						<td>Rs22,300 / Rs 15,700</td>
+					</tr>
+
+					<tr>
+						<th>PostGraduate</th>
+						<td>FT / PT</td>
+						<td>Rs 24,800 / Rs 18,200</td>
+					</tr>
+
+					<tr>
+						<th>MBA</th>
+						<td>PT</td>
+						<td>Rs140,000/- for four semesters (inclusive of general fees) <br>
+							Rs 35,000/- per semester over four semesters</td>
+					</tr>
+
+					<tr>
+						<th>MPhil/PhD</th>
+						<td></td>
+						<td>Rs75,000/- per year</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<br>
+
+			<div data-role="header">
+				<h1><b>INTERNATIONAL STUDENTS</b></h1>
+			</div>
+
+			<p>(A) Application Fees : US$ 50 Payable on Submission of Application</p><br>
+			<p>(B) Administrative Fees : US$ 200 Payable on Registration Day (Non-refundable)</p><br>
+			<p>(C) Student Union Fees : US$ 10/- (Non-refundable) </p><br>
+			<p>(D) Tuition Fees : </p><br>
+
+			<br>
+
+			<form>
+				<input id="filterTable-inputIS" data-type="search" placeholder="Search">
+			</form>
+
+			<table data-role="table" id="movie-table" data-filter="true" data-input="#filterTable-inputIS" class="ui-responsive">
+				<thead>
+					<tr>
+						<th data-priority="1"><b>Programmes</b></th>
+						<th data-priority="2"><b>Mode</b></th>
+						<th data-priority="3"><b>Tuition Fees + examination fees/Semester</b></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<th>Certificate</th>
+						<td>FT</td>
+						<td>US$ 1,430</td>
+					</tr>
+
+					<tr>
+						<th>Diploma</th>
+						<td>FT</td>
+						<td>US$ 1,430</td>
+					</tr>
+
+					<tr>
+						<th>UnderGraduate</th>
+						<td>FT</td>
+						<td>US$ 1,430</td>
+					</tr>
+
+					<tr>
+						<th>PostGraduate</th>
+						<td>FT</td>
+						<td>US$ 1,680</td>
+					</tr>
+
+					<tr>
+						<th>MBA</th>
+						<td>PT</td>
+						<td>US$ 2,500</td>
+					</tr>
+
+					<tr>
+						<th>MPhil/PhD</th>
+						<td>FT / PT</td>
+						<td>US$ 5,000 / US$ 5,000 </td>
+					</tr>
+				</tbody>
+			</table>
+
+			<br>
+			<div data-role="header">
+				<h1><b>MODE OF PAYMENT</b></h1>
+			</div>
+			<br>
+			<p> Deadlines for Undergraduate (Full Time and Part Time) Students to effect payment of fees without penalty (1 Instalment per academic year) </p>
+			<br>
+
+			<center>
+				<table id="movie-table" class="ui-responsive">
+					<thead>
+						<tr>
+							<th data-priority="1"><b>August Intake</b></th>
+							<th data-priority="2"><b>March Intake</b></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<th>New Students - On Registration day</th>
+							<td>New Students - On Registration day</td>
+						</tr>
+
+						<tr>
+							<th>On-going students - 31 August</th>
+							<td>On-going students - 01 March</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</center>
+			<br>
+			<p> Deadlines for Undergraduate (Full Time and Part Time) Students to effect payment of fees without penalty (1 Instalment per academic year) </p>
+			<br>
+
+			<center>
+				<table id="movie-table" class="ui-responsive">
+					<thead>
+						<tr>
+							<th data-priority="1"><b>August Intake</b></th>
+							<th data-priority="2"><b>March Intake</b></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<th>New Students - On Registration day</th>
+							<td>New Students - On Registration day</td>
+						</tr>
+
+						<tr>
+							<th>On-going students - 31 August</th>
+							<td>On-going students - 01 March</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</center>
+
+			<br>
+			<div data-role="header">
+				<h1><b>UTM Management</b></h1>
+			</div>
+			<br>
+
+			<table id="movie-table" class="ui-responsive">
+				<tbody>
+					<tr>
+						<td>
+							<strong>Penalty fees</strong></td>
+						<td>
+							Late payment by students:<br>
+							<br>
+							a penalty fee of 10% will be applied for payment effected after the deadline.<br>
+							<br>
+							payment of either administration fee or tuition fee or penalty fee will not be entertained beyond two (2) weeks after the deadline and the students will not be allowed to:<br>
+							<br>
+							(i) sit for those exams; or<br>
+							<br>
+							(ii) carry out the activity related to the payment not made</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Non-refundable application fees</strong></td>
+						<td>
+							<strong>For Mauritian students</strong><br>
+							Application fees: Rs 1,000/-<br>
+							<br>
+							<strong>For International students</strong><br>
+							Application fees US$ 50/-</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Extension for submission of dissertation exceeding the normal duration of a programme study</strong></td>
+						<td>
+							<strong>For Mauritian students (per semester)</strong><br>
+							General and Student Union fees: Rs 3,700/-<br>
+							Dissertation fee of Rs 6,300/-<br>
+							<br>
+							<strong>For International students (per semester)</strong><br>
+							General and Student Union fees of Rs 3,700/-<br>
+							Dissertation fee of USD 500/-</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Fees for MPhil/PhD Research Degree</strong><br>
+							&nbsp;</td>
+						<td>
+							Fees applicable to MPhil /PhD students: Rs 75,000 per year.<br>
+							<br>
+							Note: Students will be automatically deregistered in case the maximum duration has lapsed.</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Laboratory / Practical Fee</strong></td>
+						<td>
+							Rs 4,000 payable per semester by all undergraduate students having practical components, subject to the total fee payable to the University not exceeding Rs 10,000 for an academic year.</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Resit Fee</strong></td>
+						<td>
+							Rs 800/- per module<br>
+							<br>
+							Students who fail to pass in 3 attempts will be allowed to resit the module during the permissible course duration as per programme document / UTM’s Regulations.<br>
+							<br>
+							Amount payable:<br>
+							&nbsp;&nbsp; Resit fee: Rs 3000/- per attempt<br>
+							<br>
+							&nbsp;&nbsp; Administrative fee: Rs 3,500/- for every year beyond which the resit has not yet been cleared</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Appeal Fee</strong></td>
+						<td>
+							Rs 3,000/- per module<br>
+							<br>
+							(Refundable, if Appeal is successful)<br>
+							<br>
+							(Note:&nbsp; Appeal on academic grounds against coursework marks/grades, except for modules assessed<br>
+							by 100% coursework, shall not be entertained.)</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Replacement of lost bus pass</strong></td>
+						<td>
+							Rs 300/-<br>
+							(NTA Regulation)</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Loss of Student ID card</strong></td>
+						<td>
+							Rs 100/-</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Re-issue of Certificate</strong></td>
+						<td>
+							Rs 300/-</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<br>
+			<div data-role="header">
+				<h1><b>SCHOLARSHIPS</b></h1>
+			</div>
+			<br>
+			<p><b>Need-Based Scholarships</b><br>
+				(20) Need-Based Scholarships are awarded annually to full-time Mauritian students who come
+				from low income families. Renewal of Need-Based Scholarships may be effected upon satisfaction of the established criteria.</p>
+			<br>
+			<p><b>Merit-Based Scholarships</b><br>
+				(8) Merit-Based Scholarships are awarded annually to the best-performing undergraduate student on Level 1, Level 2, Level 3 in SITE,
+				SBMF and SSDT respectively and to the best performing postgraduate student on Level M in SITE, SBMF,SHS and SSDT.</p>
+			<br>
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			<h1>Copyright © 2019 UTM. All Rights Reserved.</h1>
+		</div>
+	</div>
+
+	<!-- Location -->
+	<div data-role="page" id="location">
+		<div data-role="panel" id="mypanel">
+			<a href="#home" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
+			<a href="#news" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">News</a>
+			<a href="#event" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Events</a>
+			<a href="#courses" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Courses</a>
+			<a href="#fees" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Fees</a>
+			<a href="#location" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a href="#aboutus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About UTM</a>
+			<a href="#contactus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact us</a>
+
+		</div>
+
+		<div data-theme="a" data-role="header">
+			<h3>UNIVERSITY OF TECHNOLOGY</h3>
+			<a onclick="location.href='Nadish/index.html';" class="ui-btn ui-btn-inline">Login</a>
+			<a class="ui-btn-right" id="open-panel">&#9776;</a>
+		</div>
+
+		<div data-role="content">
+			<div data-role="main" class="ui-content">
+				<div id="mapid" style="height: 80vh;"></div>
+			</div>
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			<h1>Copyright © 2019 UTM. All Rights Reserved.</h1>
+		</div>
+
+		<script type="text/javascript">
+			if (navigator.geolocation == undefined) {
+				alert("Geolocation undefined");
+			} else {
+				navigator.geolocation.getCurrentPosition(userLocated, locationError);
+
+				function userLocated(position) {
+					var latitude = -20.17684903710942;
+					var longitude = 57.467379473529945;
+
+					var mymap = L.map('mapid').setView([-20.20665, 57.6755], 10.4);
+					L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+						maxZoom: 19,
+						attribution: 'Map data &copy;<a href="https://www.openstreetmap.org/">OpenStreetMap</a>contributors,<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+						id: 'mapbox.streets',
+						accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+					}).addTo(mymap);
+
+					L.easyButton('fa-refresh', function() {
+						location.reload();
+						mymap.setView([-20.20665, 57.6755], 10.4);
+					}).addTo(mymap);
+
+					L.easyButton('fa-home', function() {
+						mymap.setView([latitude, longitude], 18.1);
+						var marker = L.marker([latitude, longitude]).addTo(mymap);
+						marker.bindPopup("University of Mauritius").closePopup();
+					}).addTo(mymap);
+
+					var searchControl = L.esri.Geocoding.geosearch().addTo(mymap);
+					var results = new L.LayerGroup().addTo(mymap);
+					searchControl.on('results', function(data) {
+						results.clearLayers();
+						for (var i = data.results.length - 1; i >= 0; i--) {
+							results.addLayer(L.marker(data.results[i].latlng));
+						}
+					});
+
+					var geocodeService = L.esri.Geocoding.geocodeService();
+					mymap.on('click', function(e) {
+						geocodeService.reverse().latlng(e.latlng).run(function(error, result) {
+							if (error) {
+								return;
+							}
+							var popLocation = e.latlng;
+							var popup = L.popup()
+								.setLatLng(popLocation)
+								.setContent(result.address.Match_addr)
+								.openOn(mymap);
+						});
+					});
+				}
+
+				function locationError(error) {
+					switch (error.code) {
+						case error.PERMISSION_DENIED:
+							alert("Permission Denied- " + error.message);
+							break;
+						case error.POSITION_UNAVAILABLE:
+							alert("Position Not Available- " + error.message);
+							break;
+						case error.TIMEOUT:
+							alert("Request Time out- " + error.message);
+							break;
+					}
+				}
+			}
+		</script>
+	</div>
+
+	<!-- About US -->
+	<div data-role="page" id="aboutus">
+		<div data-role="panel" id="mypanel">
+			<a href="#home" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
+			<a href="#news" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">News</a>
+			<a href="#event" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Events</a>
+			<a href="#courses" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Courses</a>
+			<a href="#fees" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Fees</a>
+			<a href="#location" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a href="#aboutus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About UTM</a>
+			<a href="#contactus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact us</a>
+
+		</div>
+
+		<div data-theme="a" data-role="header">
+			<h3>UNIVERSITY OF TECHNOLOGY</h3>
+			<a onclick="location.href='Nadish/index.html';" class="ui-btn ui-btn-inline">Login</a>
+			<a class="ui-btn-right" id="open-panel">&#9776;</a>
+		</div>
+
+		<div data-role="content">
+			<div data-theme="a" data-role="header">
+				<h3>About US</h3>
+			</div>
+			<p>The University of Technology, Mauritius (UTM) was created in year 2000 by Act of Parliament as the Government implemented its plan to have a second University which would focus towards development of oriented sectors in particular. Two
+				state
+				institutions namely the Mauritius Institute of Public Administration and Management (MIPAM) and the State Information Training Centre (SITRAC Ltd) were merged to form the University of Technology, Mauritius. This historic step in the
+				field of
+				higher education was prompted mainly by the need to cater more vigorously for the increasing demand for ICT and Management professionals in a country which is seriously committed to accelerate, by all means, the realization of its
+				ambition to
+				become a major service provider in the field of Information Technology, Management and Finance, Sustainable Development and allied areas. The University started operation by the end of year 2000. The Board of Governors (B.O.G), was in
+				place and
+				in year 2001, created its senior management personnel.<p><br>
+
+					<p>The UTM became fully operational in August 2001. Initially two Schools were created: the School of Business Informatics and Software Engineering (SOBISE) and the School of Public Sector Policy and Management (SOPSPAM) to
+						welcome their
+						first
+						cohorts of undergraduate students.</p><br>
+
+					<p>The UTM has embarked on a strategy of expansion to minimise, as far as possible, the consequence of its infrastructural and financial constraints to meet the growing challenges of the tertiary education sector. Efforts in that
+						direction
+						have
+						been multi fold through:<p><br>
+							<p>(i) Increase of programmes</p><br>
+							<p>(ii) Diversification of fields of study which is linked with the creation of new Schools</p><br>
+							<p>(iii) Several Memoranda of Understanding with different institutions viz.:</p><br>
+
+							<p>DYP Worldwide Ltd<p>
+									<p>Ceridian Mauritius Ltd<p>
+											<p>Mauritius College of the Air<p>
+													<p>The Graduate<p>
+															<p>Mauritius Institute of Education<p>
+																	<p>Fashion and Design Institute<p>
+																			<p>University of Malaysia-Perlis<p>
+																					<p>Constance Hospitality Training Centre<p>
+																							<p>Universite de Limoges (In process)<p>
+																									<p>With the proclamation of the Mauritius Institute of Training and Development Act, the Institut Superieur de Technologie (IST) and the Swami
+																										Dayanand Institute of Management (SDIM) has come under the
+																										aegis of UTM. This new structural development
+																										represents a significant move for the long term expansion of the University.<p><br>
+
+																											<p>The University of Technology, Mauritius, as at 2010, and now in its tenth year of operation, is poised for a phase of significant expansion
+																												in line with the provisions of its Act and the national
+																												agenda of increasing access to tertiary
+																												education, capacity building in the context of the ongoing economic reforms, promotion of knowledge, research and innovation, as
+																												propounded by the Ministry of Tertiary Education, Science, Research
+																												and Technology. The University of Technology,
+																												Mauritius has the determination to become one of the leading tertiary education institutions of the region. UTM is a member of the
+																												Association of Commonwealth Universities. The forthcoming
+																												construction of the new campus at Cote DOr will enable
+																												the UTM to increase its number of students, the number of programmes offered and provide better facilities.</p>
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			<h1>Copyright © 2019 UTM. All Rights Reserved.</h1>
+		</div>
+	</div>
+
+	<!-- Contact Us -->
+	<div data-role="page" id="contactus">
+		<div data-role="panel" id="mypanel">
+			<a href="#home" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
+			<a href="#news" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">News</a>
+			<a href="#event" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Events</a>
+			<a href="#courses" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Courses</a>
+			<a href="#fees" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">Fees</a>
+			<a href="#location" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left">Location</a>
+			<a href="#aboutus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">About UTM</a>
+			<a href="#contactus" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-mail ui-btn-icon-left">Contact us</a>
+
+		</div>
+
+		<div data-theme="a" data-role="header">
+			<h3>UNIVERSITY OF TECHNOLOGY</h3>
+			<a onclick="location.href='Nadish/index.html';" class="ui-btn ui-btn-inline">Login</a>
+			<a class="ui-btn-right" id="open-panel">&#9776;</a>
+		</div>
+
+		<div data-role="content">
+			<div data-theme="a" data-role="header">
+				<h3>Contact us</h3>
+			</div>
+			<div data-role="main" class="ui-responsive" style="margin-bottom: 50px;">
+				<div class="class=" ui-responsive"" style="margin-bottom: 100px;">
+					<label class="ui-hidden-accessible">Email</label>
+					<input id="email" name="email" type="text" placeholder="Email" />
+					<br />
+					<label class="ui-hidden-accessible">Subject</label>
+					<input id="subject" name="subject" type="text" placeholder="Subject" />
+					<br />
+					<label class="ui-hidden-accessible">Message</label>
+					<textarea id="message" name="message" placeholder="Enter your Message..." style="height: 500px;"></textarea>
+					<br />
+					<div class="ui-block-a" style="width: 100%;"><button onclick="ResetContactForm();" class="ui-shadow ui-btn ui-corner-all">Reset</button></div>
+					<div class="ui-block-b" style="width: 100%;"></div>
+					<div class="ui-block-d" style="width: 100%;"><button onclick="submitMessage()" class="ui-shadow ui-btn ui-corner-all">Send Message</button></div>
+				</div>
+				<br>
+			</div>
+
+			<div data-role="footer" data-position="fixed">
+				<h1>Copyright © 2019 UTM. All Rights Reserved.</h1>
+			</div>
+		</div>
+
+</body>
+
+</html>

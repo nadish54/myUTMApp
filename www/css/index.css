@@ -1,0 +1,75 @@
+/*carousel caption */
+.flex-caption {
+  width: 100%;
+  padding: 2%;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+  font-size: 14px;
+  line-height: 18px;
+}
+
+/*navbar */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  background-color: rgba(0, 0, 0, 1);
+
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 100%;
+  color:#FFFFFF ;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #1F618D;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.alignleft {
+	float: left;
+    padding-top:10px;
+
+}
+.alignright {
+	float: right;
+  padding-top:5px;
+  padding-right:10px;
+}
+
+.footer-container{
+    height:40px;
+    max-width:100%;
+    padding-top:10px;
+    padding-left:10px;
+}
+p{
+  text-decoration: none;
+  font-weight:normal;
+}
