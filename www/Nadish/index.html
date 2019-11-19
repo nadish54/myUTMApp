@@ -67,7 +67,7 @@
         });
       } else {
         if (ValidateEmail(email) == true) {
-          var getresultsurl = "http://192.168.7.144/myUTMDB/login.php?email=" + email + "&password=" + password;
+          var getresultsurl = "http://192.168.43.80/myUTMDB/login.php?email=" + email + "&password=" + password;
           $.get(getresultsurl, function(data, status) {
             if (data == "Success") {
               location.href = 'dashboard.html#dashboard';
@@ -90,7 +90,7 @@
     }
 
     function check() {
-      var getresultsurl = "http://192.168.7.144/myUTMDB/dashboard.php?operation=" + 11;
+      var getresultsurl = "http://192.168.43.80/myUTMDB/dashboard.php?operation=" + 11;
       $.get(getresultsurl, function(data, status) {
         if (data == "Exist") {
           location.href = 'dashboard.html';

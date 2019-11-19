@@ -3,7 +3,7 @@ $(function() {
   updateClock();
 
   //News
-  var getnewsurl = "http://192.168.7.144/myUTMDB/dashboard.php?operation=" + 1;
+  var getnewsurl = "http://192.168.43.80/myUTMDB/dashboard.php?operation=" + 1;
   $.get(getnewsurl, function(data, status) {
     var newsArr = JSON.parse(data);
     if (newsArr != "not found") {
@@ -15,7 +15,7 @@ $(function() {
   });
 
   //events
-  var geteventsurl = "http://192.168.7.144/myUTMDB/dashboard.php?operation=" + 2;
+  var geteventsurl = "http://192.168.43.80/myUTMDB/dashboard.php?operation=" + 2;
   $.get(geteventsurl, function(data, status) {
     var eventsArr = JSON.parse(data);
     if (eventsArr != "not found") {
@@ -27,7 +27,7 @@ $(function() {
   });
 
   //Timetables
-  var gettimetablesurl = "http://192.168.7.144/myUTMDB/dashboard.php?operation=" + 3;
+  var gettimetablesurl = "http://192.168.43.80/myUTMDB/dashboard.php?operation=" + 3;
   $.get(gettimetablesurl, function(data, status) {
     var timetablesArr = JSON.parse(data);
     if (timetablesArr != "not found") {
@@ -39,7 +39,7 @@ $(function() {
   });
 
   //Results
-  var getresultsurl = "http://192.168.7.144/myUTMDB/dashboard.php?operation=" + 4;
+  var getresultsurl = "http://192.168.43.80/myUTMDB/dashboard.php?operation=" + 4;
   $.get(getresultsurl, function(data, status) {
     var resultsArr = JSON.parse(data);
     if (resultsArr != "not found") {
@@ -51,7 +51,7 @@ $(function() {
   });
 
   //About
-  var getaboutsurl = "http://192.168.7.144/myUTMDB/dashboard.php?operation=" + 5;
+  var getaboutsurl = "http://192.168.43.80/myUTMDB/dashboard.php?operation=" + 5;
   $.get(getaboutsurl, function(data, status) {
     var aboutArr = JSON.parse(data);
     if (aboutArr != "not found") {
@@ -62,7 +62,7 @@ $(function() {
   });
 
   //Weather
-  var getweathersurl = "http://192.168.7.144/myUTMDB/dashboard.php?operation=" + 6;
+  var getweathersurl = "http://192.168.43.80/myUTMDB/dashboard.php?operation=" + 6;
   $.get(getweathersurl, function(data, status) {
     var weatherArr = JSON.parse(data);
     if (data != "not found") {
@@ -135,7 +135,7 @@ function ChangePasswordForm() {
   var newpass = document.getElementById('newpass').value;
   var renewpass = document.getElementById('renewpass').value;
 
-  var getcontacturl = "http://192.168.7.144/myUTMDB/changepassword.php?currpass=" + currpass.trim() + "&newpass=" + newpass.trim() + "&renewpass=" + renewpass.trim();
+  var getcontacturl = "http://192.168.43.80/myUTMDB/changepassword.php?currpass=" + currpass.trim() + "&newpass=" + newpass.trim() + "&renewpass=" + renewpass.trim();
   $.get(getcontacturl, function(data, status) {
     if (data == "Success") {
       $.alert({
@@ -172,7 +172,7 @@ function submitMessage() {
   var message = document.getElementById('message').value;
 
   if (ValidateEmail(email) == true) {
-    var getcontacturl = "http://192.168.7.144/myUTMDB/contact.php?email=" + email.trim() + "&subject=" + subject.trim() + "&message=" + message.trim();
+    var getcontacturl = "http://192.168.43.80/myUTMDB/contact.php?email=" + email.trim() + "&subject=" + subject.trim() + "&message=" + message.trim();
     $.get(getcontacturl, function(data, status) {
       if (data == "Success") {
         $.alert({
@@ -207,7 +207,7 @@ function ResetContactForm() {
 
 //Logout
 function signout() {
-  var getresultsurl = "http://192.168.7.144/myUTMDB/dashboard.php?operation=" + 10;
+  var getresultsurl = "http://192.168.43.80/myUTMDB/dashboard.php?operation=" + 10;
   $.get(getresultsurl, function(data, status) {
     if (data == true) {
       location.href = 'index.html';
@@ -217,7 +217,7 @@ function signout() {
 
 //Check
 function check() {
-  var getresultsurl = "http://192.168.7.144/myUTMDB/dashboard.php?operation=" + 11;
+  var getresultsurl = "http://192.168.43.80/myUTMDB/dashboard.php?operation=" + 11;
   $.get(getresultsurl, function(data, status) {
     if (data != "Exist") {
       location.href = 'index.html';

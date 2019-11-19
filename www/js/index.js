@@ -20,7 +20,7 @@ $(document).on('pagecreate', '[data-role="page"]', function() {
 $(document).ready(function() {
   function fetch_data() {
     $.ajax({
-      url: "http://192.168.7.144/myUTMDB/displaytopnews.php",
+      url: "http://192.168.43.80/myUTMDB/displaytopnews.php",
       method: "POST",
       success: function(data) {
         $('#topthreenews').html(data);
@@ -35,7 +35,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   function fetch_data() {
     $.ajax({
-      url: "http://192.168.7.144/myUTMDB/displaytopevent.php",
+      url: "http://192.168.43.80/myUTMDB/displaytopevent.php",
       method: "POST",
       success: function(data) {
         $('#topthreeevent').html(data);
@@ -50,7 +50,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   function fetch_data() {
     $.ajax({
-      url: "http://192.168.7.144/myUTMDB/displaynews.php",
+      url: "http://192.168.43.80/myUTMDB/displaynews.php",
       method: "POST",
       success: function(data) {
         $('#news_table_data').html(data);
@@ -65,7 +65,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   function fetch_data() {
     $.ajax({
-      url: "http://192.168.7.144/myUTMDB/displayevent.php",
+      url: "http://192.168.43.80/myUTMDB/displayevent.php",
       method: "POST",
       success: function(data) {
         $('#event_table_data').html(data);
@@ -80,7 +80,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   function fetch_data() {
     $.ajax({
-      url: "http://192.168.7.144/myUTMDB/displaycourses.php",
+      url: "http://192.168.43.80/myUTMDB/displaycourses.php",
       method: "POST",
       success: function(data) {
         $('#courses_table_data').html(data);
@@ -98,7 +98,7 @@ function submitMessage() {
   var message = document.getElementById('message').value;
 
   if (ValidateEmail(email) == true) {
-    var getcontacturl = "http://192.168.7.144/myUTMDB/contact.php?email=" + email.trim() + "&subject=" + subject.trim() + "&message=" + message.trim();
+    var getcontacturl = "http://192.168.43.80/myUTMDB/contact.php?email=" + email.trim() + "&subject=" + subject.trim() + "&message=" + message.trim();
     $.get(getcontacturl, function(data, status) {
       if (data == "Success") {
         $.alert({
@@ -147,7 +147,7 @@ function MoneyConversion() {
   var fromCurr = document.getElementById('fromCurr').value;
   var toCurr = document.getElementById('toCurr').value;
 
-  var getcontacturl = "http://192.168.7.144/myUTMDB/moneyconversion.php?from=" + fromCurr.trim() + "&to=" + toCurr.trim() + "&amount=" + price.trim();
+  var getcontacturl = "http://192.168.43.80/myUTMDB/moneyconversion.php?from=" + fromCurr.trim() + "&to=" + toCurr.trim() + "&amount=" + price.trim();
   //alert(getcontacturl);
   $.get(getcontacturl, function(data, status) {
     if (data != null) {
