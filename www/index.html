@@ -299,6 +299,7 @@
 	</div>
 
 	<!-- Fees -->
+	<!-- Fees -->
 	<div data-role="page" id="fees">
 		<div data-role="panel" id="mypanel">
 			<a href="#home" data-transition="flow" class="ui-shadow ui-btn ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
@@ -388,7 +389,47 @@
 			<div data-role="header">
 				<h1><b>INTERNATIONAL STUDENTS</b></h1>
 			</div>
+			<input type="number" name="price" id="price">
+			<select name="fromCurr" id="fromCurr">
+				<option>FROM</option>
+				        <option value="USD">USD - United States Dollar</option>
+				        <option value="ZAR">ZAR - South African Rand</option>
+				        <option value="GBP">GBP - British Pound Sterling</option>
+				        <option value="AED">AED - United Arab Emirates Dirham</option>
+				        <option value="AUD">AUD - Australian Dollar</option>
+				        <option value="CAD">CAD - Canadian Dollar</option>
+				        <option value="CHF">CHF - Swiss Franc</option>
+				        <option value="CNY">CNY - Chinese Yuan</option>
+				        <option value="INR">INR - Indian Rupee</option>
+				        <option value="MUR">MUR - Mauritian Rupee</option>
+				        <option value="TRY">TRY - Turkish Lira</option>
+				    
+			</select>
+			<select name="toCurr" id="toCurr">
+				<option>TO</option>
+				<option value="USD">USD - United States Dollar</option>
+				        <option value="ZAR">ZAR - South African Rand</option>
+				        <option value="GBP">GBP - British Pound Sterling</option>
+				        <option value="AED">AED - United Arab Emirates Dirham</option>
+				        <option value="AUD">AUD - Australian Dollar</option>
+				        <option value="CAD">CAD - Canadian Dollar</option>
+				        <option value="CHF">CHF - Swiss Franc</option>
+				        <option value="CNY">CNY - Chinese Yuan</option>
+				        <option value="INR">INR - Indian Rupee</option>
+				        <option value="MUR">MUR - Mauritian Rupee</option>
+				        <option value="TRY">TRY - Turkish Lira</option>
+				    
+			</select>
+			<input type="button" value="Convert" onclick="MoneyConversion()">
+			<br>
+			<h4 style="display:inline;">Converted Amount: </h4>
+			<h4 style="display:inline;" type="text" name="Convertedprice" id="Convertedprice"></h4>
 
+
+			<br>
+			<br>
+			<br>
+			<br>
 			<p>(A) Application Fees : US$ 50 Payable on Submission of Application</p><br>
 			<p>(B) Administrative Fees : US$ 200 Payable on Registration Day (Non-refundable)</p><br>
 			<p>(C) Student Union Fees : US$ 10/- (Non-refundable) </p><br>
